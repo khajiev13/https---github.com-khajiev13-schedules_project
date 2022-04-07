@@ -39,7 +39,7 @@ def greet():
 
 
 @app.route("/locations", methods=["GET", "POST"])
-def locations():
+def add_locations():
     return render_template("locations.html")
 
 
@@ -52,7 +52,8 @@ def location_registered():
         loc_name, located_campus))
     str = ''
     my_cursor.execute("SELECT * FROM locations")
-    for x in my_cursor:
-        str += "{}".format(x[0])
-    print(str)
-    return "You have succesfully inserted {}".format(str)
+    return "You have succesfully inserted {}".format(loc_name)
+
+@app.route("/students")
+def add_students():
+    return render_template("students.html")
