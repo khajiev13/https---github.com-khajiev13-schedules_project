@@ -9,7 +9,41 @@
 </head>
 
 <body>
+    <form action="/student_registered" method="get" style="display: inline-grid;">
+        <label for="">Student ID:</label>
+        <input type="text" name="student_id" id="" required>
+        <label for="">First name:</label>
+        <input type="text" name="first_name" id="" required>
+        <label for="">Last name:</label>
+        <input type="text" name="last_name" id="" required>
+        <label for="">Nickname:</label>
+        <input type="text" name="Nickname" id="" required>
+        <label for="">Birthday:</label>
+        <input type="date" name="" id="">
+        <label for="degree">Choose a degree:</label>
+        <select name="degree" id="">
+            <option value="bachelor">Bachelor's degree</option>
+            <option value="master">Master's degree</option>
+            <option value="phd">Phd</option>
+        </select>
+        <div>
+            <label for="">School year:</label>
+            <input type="radio" name="school_year" id="" value="Freshman">
+            <label for="freshman">Freshman</label>
+            <input type="radio" name="school_year" id="" value="Sophomore">
+            <label for="Sophomore">Sophomore</label>
+            <input type="radio" name="school_year" id="" value="Junior">
+            <label for="Junior">Junior</label>
+            <input type="radio" name="school_year" id="" value="Senior">
+            <label for="Senior">Senior</label>
+        </div>
+        <label for="">What do you major in?</label>
+        <input type="text" name="major" id="">
+        <label for="">What player number would you like to get?</label>
+        <input type="number" name="player_id" id="">
+        <input type="submit" value="Submit">
 
+    </form>
 </body>
 
 </html>

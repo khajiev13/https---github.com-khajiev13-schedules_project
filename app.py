@@ -1,4 +1,5 @@
 from crypt import methods
+from platform import python_branch
 from flask import Flask, render_template, request
 import mysql.connector
 
@@ -15,12 +16,12 @@ mydb = mysql.connector.connect(
 my_cursor = mydb.cursor()
 my_cursor.execute("SELECT * FROM locations")
 
+# Getting data from sql to python
+# str = ''
+# for x in my_cursor:
+#     str += "{}".format(x[0])
 
-str = ''
-for x in my_cursor:
-    str += "{}".format(x[0])
-
-print(str)
+# print(str)
 
 app = Flask(__name__)
 app.run(debug=True)
@@ -54,6 +55,27 @@ def location_registered():
     my_cursor.execute("SELECT * FROM locations")
     return "You have succesfully inserted {}".format(loc_name)
 
+
 @app.route("/students")
 def add_students():
     return render_template("students.html")
+
+
+@app.route("/activities")
+def add_activities():
+    return render_template("activities.html")
+
+
+@app.route("/schedules")
+def add_schedules():
+    return render_template("schedules.html")
+
+
+@app.route("/teams")
+def add_teams():
+    return render_template("teams.html")
+
+
+@app.route("/referees")
+def add_referees():
+    return render_template("referees.html")
