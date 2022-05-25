@@ -11,12 +11,33 @@
 <body>
     <form action="/schedule_registered" method="get" style="display: inline-grid;">
         <label for="">What activity is it? :</label>
-        <input type="text" autofocus name="activity_type_name" placeholder="Basketball or Soccer" required>
-        WE should include teams and referees if needed
+        <select name="type" id="">
+            {% block body %}
+            <option value="" disabled selected>Sport</option>
+            {% for sport in sport_types %}
+            <option value="{{ sport }}">{{ sport }}</option>
+            {% endfor %}
+
+        </select>
+        <label for="">Who is the referee? :</label>
+        <select name="referee" id="">
+
+            <option value="" disabled selected>Referee</option>
+            {% for referee in referees %}
+            <option value="{{ referee }}">{{ referee }}</option>
+            {% endfor %}
+        </select>
         <label for="">When does it take place? :</label>
         <input type="datetime-local" autofocus name="datetime" required>
         <label for="">Where does it take place? :</label>
-        <input type="text" autofocus name="location_name" required placeholder="Football pitch Zhongguancun">
+        <select name="location" id="">
+            <option value="" disabled selected>Sport</option>
+            {% for location in locations %}
+            <option value="{{ location }}">{{ location }}</option>
+            {% endfor %}
+            {% endblock %}
+        </select>
+
         <input type="submit" value="Submit">
     </form>
 </body>

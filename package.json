@@ -1,0 +1,6 @@
+{
+  "dependencies": {
+    "chosen-js": "^1.8.7",
+    "kill-port": "^2.0.0"
+  }
+}

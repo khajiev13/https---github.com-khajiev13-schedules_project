@@ -14,9 +14,19 @@
         <input id="name_input" type="text" name="loc_name" required>
         <label for="campus_input">Which campus is it located? :</label>
         <input id="campus_input" type="text" name="located_campus" required>
-        <br>
+        <label for="sport-types">What activities are available in his location ? :</label>
+        <select data-placeholder="Choose sport..." multiple class="chosen-select" name="sport-types">
+            {% block body %}
+            <option value="" disabled selected>Sport</option>
+            {% for sport in sport_types %}
+            <option value="{{ sport }}">{{ sport }}</option>
+            {% endfor %}
+            {% endblock %}
+        </select>
         <input type="submit" value="Register">
     </form>
+
+
 </body>
 
 </html>
