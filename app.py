@@ -13,7 +13,7 @@ mydb = mysql.connector.connect(
     autocommit=True
 )
 
-my_cursor = mydb.cursor()
+my_cursor = mydb.cursor(buffered=True)
 
 
 # my_cursor.execute("SELECT * FROM locations")
@@ -55,8 +55,11 @@ def location_registered():
     located_campus = request.args.get("located_campus")
     sport_types = request.args.getlist("sport-types")
     for sport_type in sport_types:
+        print(sport_type)
+        # my_cursor.execute(
+        #     f"""CALL add_location('{loc_name}','{located_campus}','{sport_type}'); """)
         my_cursor.execute(
-            f"""CALL add_location('{loc_name}','{located_campus}','{sport_type}') """)
+            f"""CALL add_location('Liuxuesheng Dorm','Zhongguancun','Baseball'); """)
     return "You have succesfully inserted {}".format(loc_name)
 
 
@@ -137,7 +140,19 @@ def schedule_register():
 
 @ app.route("/teams")
 def add_teams():
-    return render_template("teams.html")
+    sport_types = set()
+    my_cursor.execute("SELECT type FROM activity_types ORDER BY type")
+    for row in my_cursor:
+        row = str(row)[2:-3]  # Get rid of ( and ' from the list
+        sport_types.add(row)  # Add it to a new set
+
+    students = set()
+    my_cursor.execute(
+        "SELECT nickname FROM students ORDER BY first_name")
+    for row in my_cursor:
+        row = str(row)[2:-3]  # Get rid of ( and ' from the list
+        students.add(row)  # Add it to a new set
+    return render_template("teams.html", students=students, sport_types=sport_types)
 
 
 @ app.route("/team_registered")
